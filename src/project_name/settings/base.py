@@ -143,3 +143,4 @@ LOGIN_URL = reverse_lazy("accounts:login")
 
 THUMBNAIL_EXTENSION = 'png'     # Or any extn for your thumbnails
 django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
