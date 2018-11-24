@@ -13,10 +13,10 @@ import django_heroku
 import os
 
 # Build paths inside the project like this: BASE_DIR / "directory"
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATICFILES_DIRS = [str(BASE_DIR / 'static'), ]
-MEDIA_ROOT = str(BASE_DIR / 'media')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "/media/"
 
 # Use Django templates using the new Django 1.8 TEMPLATES settings
@@ -24,7 +24,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            str(BASE_DIR / 'templates'),
+            os.path.join(BASE_DIR, 'templates'),
             # insert more TEMPLATE_DIRS here
         ],
         'APP_DIRS': True,
@@ -50,7 +50,7 @@ env = environ.Env()
 
 # Create a local.env file in the settings directory
 # But ideally this env file should be outside the git repo
-env_file = Path(__file__).resolve().parent / 'local.env'
+env_file = os.path.dirname(os.path.abspath(__file__)) / 'local.env'
 if env_file.exists():
     environ.Env.read_env(str(env_file))
 
