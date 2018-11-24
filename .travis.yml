@@ -14,3 +14,4 @@ deploy:
   provider: heroku
   api-key: ce3733bc-6b07-48e1-8b80-6ecb38f54450
   skip_cleanup: true
+  app: test-django-apl
