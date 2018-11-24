@@ -50,7 +50,7 @@ env = environ.Env()
 
 # Create a local.env file in the settings directory
 # But ideally this env file should be outside the git repo
-env_file = os.path.dirname(os.path.abspath(__file__)) / 'local.env'
+env_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'local.env')
 if env_file.exists():
     environ.Env.read_env(str(env_file))
 
